@@ -1,0 +1,12 @@
+<p>
+  trends works!
+</p>
+<trends-form (onSubmitted)="timeSpanUpdate($event)">
+</trends-form>
+<div>
+  <ul>
+    <li *ngFor="let w of ws | async">
+      <p>{{w.Timestamp | date:"EEE, dd.MM.yyyy HH:mm" }}: {{w.temp}} °C</p>
+    </li>
+  </ul>
+</div>

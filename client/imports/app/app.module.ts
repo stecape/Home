@@ -1,32 +1,35 @@
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { AppComponent } from "./app.component";
-import { DemoComponent } from "./demo/demo.component";
-import { DemoDataService } from "./demo/demo-data.service";
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+import { routes } from './app.routes';
+import { MENU_DECLARATIONS } from './menu';
+import { HOME_DECLARATIONS } from './pages/home';
+import { CONTROLLER_DECLARATIONS } from './pages/controller';
+import { WATERPLANT_DECLARATIONS } from './pages/waterplant';
+import { DOCS_DECLARATIONS } from './pages/docs';
+import { TRENDS_DECLARATIONS } from './pages/trends';
 
 @NgModule({
-  // Components, Pipes, Directive
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    FormsModule,
+    ReactiveFormsModule
+  ],
   declarations: [
     AppComponent,
-    DemoComponent
+    ...MENU_DECLARATIONS,
+    ...HOME_DECLARATIONS,
+    ...CONTROLLER_DECLARATIONS,
+    ...DOCS_DECLARATIONS,
+    ...TRENDS_DECLARATIONS,
+    ...WATERPLANT_DECLARATIONS,
   ],
-  // Entry Components
-  entryComponents: [
+  bootstrap: [
     AppComponent
-  ],
-  // Providers
-  providers: [
-    DemoDataService
-  ],
-  // Modules
-  imports: [
-    BrowserModule
-  ],
-  // Main Component
-  bootstrap: [ AppComponent ]
+  ]
 })
-export class AppModule {
-  constructor() {
-
-  }
-}
+export class AppModule {}

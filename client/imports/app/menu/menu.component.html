@@ -1,0 +1,15 @@
+<!--
+		Questo è il template del menu di navigazione.
+		E' racchiuso nei tag nav e c'è una for che pesca i dati delle pagine
+		da una struttura inclusa nel ts del componente.
+		La struttura è un oggetto di tipo MenuItem (la classe MenuItem è definita nel file
+		menu-item.ts) creato e definito in mocks.ts.
+-->
+
+<nav>
+	<div *ngFor="let menuItem of menuItems">
+		<a routerLink="{{menuItem.path}}">							<!--routerLink è l'equivalente di href per le WebApp Single Page, in pratica-->
+			<b>{{menuItem.name}}</b> {{menuItem.description}}		<!--cliccando sul link dici al router di seguire il path {menuItem.path}},  -->
+		</a>														<!--e il router eseguirà quanto specificato nella configurazione delle route-->
+	</div>
+</nav>
