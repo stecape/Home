@@ -18,9 +18,52 @@ export class TrendsComponent implements OnInit, OnDestroy {
 	ws: Observable<WeatherSamp[]>;
 	wsSub: Subscription;
   
+  chart = {
+    target: 'chart1',
+    type: 'LineChart',
+    columns: [
+      ['datetime', 'Date'],
+      ['number', 'Temperature']
+    ],    
+    rows: [
+      [new Date("2015-12-14T09:35:00Z"), 6.2],
+      [new Date("2015-12-14T09:30:00Z"), 6.1],
+      [new Date("2015-12-14T09:25:00Z"), 6],
+      [new Date("2015-12-14T09:20:00Z"), 5.9],
+      [new Date("2015-12-14T09:15:00Z"), 5.8],
+      [new Date("2015-12-14T09:10:00Z"), 5.7],
+      [new Date("2015-12-14T09:05:00Z"), 5.5],
+      [new Date("2015-12-14T09:00:00Z"), 5.3],
+      [new Date("2015-12-14T08:55:00Z"), 5.2],
+      [new Date("2015-12-14T08:50:00Z"), 5.2]
+    ],
+    options: {
+      'title':'Temperature Trend',
+      'width':800,
+      'height':300
+    }
+  };
+  /*
+    devo definire le righe a runtime, direi per iniziare in inInit()
+    rows: [
+      ['Mushrooms', 3],
+      ['Onions', 1],
+      ['Olives', 1],
+      ['Zucchini', 1],
+      ['Pepperoni', 2]
+    ]
+
+
+  */
   ngOnInit() {
     this.ws = WeatherSamps.find({},{sort:{'Timestamp':-1},limit:10}).zone();
     this.wsSub = MeteorObservable.subscribe('weatherSamps').subscribe();
+    for (var w in this.ws) {
+      console.log(w);  
+      this.chart.rows.push([w.Timestamp, w.temp]);
+    }
+    console.log(this.ws);
+    drawChart(this.chart);
   }
   
   ngOnDestroy() {
@@ -28,6 +71,14 @@ export class TrendsComponent implements OnInit, OnDestroy {
   }
 
   timeSpanUpdate(newTimeSpan){
-    this.ws = WeatherSamps.find({ 'Timestamp': { $gte: newTimeSpan.startDate, $lt: newTimeSpan.endDate }}, { sort:{'Timestamp':-1} }).zone();
+    this.ws = WeatherSamps.find(
+      {
+        'Timestamp': { 
+          $gte: new Date (newTimeSpan.startDate),
+          $lt: new Date (newTimeSpan.endDate)
+        }
+      },
+      { sort: {'Timestamp':-1} }
+    ).zone();
   }
 }

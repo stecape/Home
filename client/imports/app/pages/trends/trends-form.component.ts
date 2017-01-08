@@ -19,24 +19,13 @@ export class TrendsFormComponent implements OnInit {
   ngOnInit() {
     this.timeSpanDefForm = this.formBuilder.group({
       startDate: ['', Validators.required],
-      startTime: ['', Validators.required],
-      endDate: ['', Validators.required],
-      endTime: ['', Validators.required]
+      endDate: ['', Validators.required]
     });
   }
 
   findTimeSpan(): void {
     if (this.timeSpanDefForm.valid) {
-    	var ts = {
-    		startDate:null,
-    		endDate:null
-    	};
-    	console.log("child side: ");
-    	console.log(this.timeSpanDefForm.value);
-    	ts.startDate = new Date(this.timeSpanDefForm.value.startDate + "T" + this.timeSpanDefForm.value.startTime + "Z");
-    	ts.endDate = new Date(this.timeSpanDefForm.value.endDate + "T" + this.timeSpanDefForm.value.endTime + "Z");
-    	this.onSubmitted.emit(ts);
-    	console.log(ts);
+    	this.onSubmitted.emit(this.timeSpanDefForm.value);
       this.timeSpanDefForm.reset();
     }
   }

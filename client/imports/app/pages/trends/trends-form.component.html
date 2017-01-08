@@ -1,15 +1,9 @@
 <form [formGroup]="timeSpanDefForm" (ngSubmit)="findTimeSpan()">
   <label>Start Date</label>
-  <input type="date" formControlName="startDate">
+  <input type="datetime-local" formControlName="startDate">
 
-  <label>Start Time</label>
-  <input type="time" formControlName="startTime">
- 
   <label>End Date</label>
-  <input type="date" formControlName="endDate">
+  <input type="datetime-local" formControlName="endDate">
 
-  <label>End Time</label>
-  <input type="time" formControlName="endTime">
-  
   <button type="submit">Find</button>
 </form>

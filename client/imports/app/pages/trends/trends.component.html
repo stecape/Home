@@ -3,6 +3,10 @@
 </p>
 <trends-form (onSubmitted)="timeSpanUpdate($event)">
 </trends-form>
+
+
+<div id="chart1" width="100%"></div>
+
 <div>
   <ul>
     <li *ngFor="let w of ws | async">

@@ -1,7 +1,7 @@
 import { CollectionObject } from './collection-object.model';
 
 export interface WeatherSamp {
-  Timestamp: string;
+  Timestamp: Date;
   windunit: string;
   bearing: number;
   pressTL: number;
