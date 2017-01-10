@@ -17,7 +17,7 @@ import template from './trends.component.html';
 export class TrendsComponent implements OnInit, OnDestroy {
 	ws: Observable<WeatherSamp[]>;
 	wsSub: Subscription;
-  
+
   chart = {
     target: 'chart1',
     type: 'LineChart',
@@ -58,11 +58,7 @@ export class TrendsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.ws = WeatherSamps.find({},{sort:{'Timestamp':-1},limit:10}).zone();
     this.wsSub = MeteorObservable.subscribe('weatherSamps').subscribe();
-    for (var w in this.ws) {
-      console.log(w);  
-      this.chart.rows.push([w.Timestamp, w.temp]);
-    }
-    console.log(this.ws);
+
     drawChart(this.chart);
   }
   
@@ -79,6 +75,9 @@ export class TrendsComponent implements OnInit, OnDestroy {
         }
       },
       { sort: {'Timestamp':-1} }
-    ).zone();
+    );
+    this.chart.rows=[];
+    this.ws.forEach(x => this.chart.rows.push([x[0].Timestamp, x[0].temp]));
+    drawChart(this.chart);
   }
 }
