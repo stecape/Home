@@ -38,7 +38,7 @@ export class TrendsComponent implements OnInit, OnDestroy {
     ],    
     rows: [],
     options: {
-      'title':'Values Trend',
+      'title':'Temperatures Trend',
       'width':800,
       'height':300
     }
