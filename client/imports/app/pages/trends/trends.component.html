@@ -5,12 +5,4 @@
 </trends-form>
 
 
-<div id="chart1" width="100%"></div>
-
-<div>
-  <ul>
-    <li *ngFor="let w of ws | async">
-      <p>{{w.Timestamp | date:"EEE, dd.MM.yyyy HH:mm" }}: {{w.temp}} °C</p>
-    </li>
-  </ul>
-</div>
+<div id="chart" width="100%"></div>
