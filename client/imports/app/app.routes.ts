@@ -1,4 +1,5 @@
-import { Route } from '@angular/router';
+import { ModuleWithProviders }  from '@angular/core';
+import { Route, RouterModule } from '@angular/router';
 import { Meteor } from 'meteor/meteor';
 
 import { HomeComponent } from './pages/home/home.component';
@@ -15,3 +16,5 @@ export const routes: Route[] = [
   { path: 'waterplant', component: WaterPlantComponent },
   { path: 'docs', component: DocsComponent }
 ];
+
+export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

@@ -1,8 +1,9 @@
-<p>
-  trends works!
-</p>
-<trends-form (onSubmitted)="timeSpanUpdate($event)">
-</trends-form>
-
-
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Find</h3>
+  </div>
+  <div class="panel-body">
+		<trends-form (onSubmitted)="timeSpanUpdate($event)"></trends-form>
+	</div>
+</div>
 <div id="chart" width="100%"></div>

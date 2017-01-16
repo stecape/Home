@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { routes } from './app.routes';
+import { routes, routing } from './app.routes';
 import { MENU_DECLARATIONS } from './menu';
 import { HOME_DECLARATIONS } from './pages/home';
 import { CONTROLLER_DECLARATIONS } from './pages/controller';
@@ -15,7 +15,7 @@ import { TRENDS_DECLARATIONS } from './pages/trends';
 @NgModule({
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    routing,//RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule
   ],

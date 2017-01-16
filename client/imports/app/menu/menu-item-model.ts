@@ -11,5 +11,6 @@ export class MenuItem {
 	name: string;
 	description: string;
 	path: string;
-	isActive: boolean
+	isActive: boolean;
+	icon:string
 }

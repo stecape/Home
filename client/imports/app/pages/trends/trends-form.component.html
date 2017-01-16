@@ -1,11 +1,14 @@
 <form [formGroup]="timeSpanDefForm" (ngSubmit)="findTimeSpan()">
-  <label>Start Date</label>
-  <input type="datetime-local" formControlName="startDate">
-
-  <label>End Date</label>
-  <input type="datetime-local" formControlName="endDate">
-
-  <button type="submit">Find</button>
-
+	<div class="input-group">
+	  <span class="input-group-addon" id="startDate">Start Date</span>
+  	<input type="datetime-local" formControlName="startDate" class="form-control" placeholder="Start Date" aria-describedby="startDate">
+  </div>
+  </br>
+	<div class="input-group">
+	  <span class="input-group-addon" id="endDate">End Date</span>
+  	<input type="datetime-local" formControlName="endDate" class="form-control" placeholder="End Date" aria-describedby="endDate">
+  </div>
+  </br>		
+  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Find</button>
   <!-- <button type="button" (click)="insertValue()">Add</button> -->
 </form>

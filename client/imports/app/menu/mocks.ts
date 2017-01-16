@@ -5,24 +5,28 @@ export const MENUITEMS: MenuItem[] = [		//esporto un oggetto costante di tipo Me
 			name: "Trends",
 			description: "Some graphs about various things",
 			path: "trends",
-			isActive: true
+			isActive: true,
+			icon: "glyphicon glyphicon-stats"
 		},
 		{
 			name: "Controller",
 			description: "The button room",
 			path: "controller",
-			isActive: false
+			isActive: false,
+			icon: "glyphicon glyphicon-play"
 		},
 		{
 			name: "Water Plant",
 			description: "This is where is represented the schema of the Water Treatement Plant; with heating, distributing, ecc.",
 			path: "waterplant",
-			isActive: false
+			isActive: false,
+			icon: "glyphicon glyphicon-tint"
 		},
 		{
 			name: "Docs",
 			description: "Home Docs Here!",
 			path: "docs",
-			isActive: false
+			isActive: false,
+			icon: "glyphicon glyphicon-book"
 		}
 	]
