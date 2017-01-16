@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { MenuItem } from './menu-item-model';											//importo la classe MenuItems
+import { MenuItem } from './menu-item-model';											
 import { MENUITEMS } from './mocks';
  
 import template from './menu.component.html';
@@ -12,12 +11,11 @@ import template from './menu.component.html';
 })
 export class MenuComponent implements OnInit {
 
-	menuItems: MenuItem[];																		//creo un'istanza di menuItems[] che quindi al momento risulta vuoto.
-																														//E' un array di oggetti MenuItem, e conterrà gli oggetti MenuItem che 
-  constructor() { }																					//definiscono le proprietà delle voci del Menu di navigazione.
+  menuItems: MenuItem[];																	
 
   ngOnInit() {
-  	this.menuItems= MENUITEMS;															//sull'inizializzazione del component inizializzo l'oggetto menuItems
-  }																													//andando a fare riferimento a quanto specificato nel file mocks.ts
+  	this.menuItems= MENUITEMS;  	
+  }																													
+
 
 }
