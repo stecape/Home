@@ -10,5 +10,6 @@
 export class MenuItem {
 	name: string;
 	description: string;
-	path: string
+	path: string;
+	isActive: boolean
 }

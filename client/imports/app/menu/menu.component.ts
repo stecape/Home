@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { MenuItem } from './menu-item-model';											//importo la classe MenuItems
 import { MENUITEMS } from './mocks';
