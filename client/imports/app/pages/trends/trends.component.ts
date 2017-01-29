@@ -7,6 +7,7 @@ import { WeatherSamps } from '../../../../../both/collections/weather-samps.coll
 import { WeatherSamp } from '../../../../../both/models/weather-samp.model';
 
 import { TrendsFormComponent } from './trends-form.component';
+import { ChartComponent } from '../../../objects/chart/chart.component';
  
 import template from './trends.component.html';
  
@@ -28,21 +29,22 @@ export class TrendsComponent implements OnInit, OnDestroy {
   /*  Array delle subscription a v. Verrà iterato per disiscrivere tutti gli observer da v  */
   subscriptions:Subscription[] = [];
   
+  data = [];
   /*  Oggetto di parametrizzazione del grafico. #todo: portare fuori  */
-  chart = {
-    target: 'chart',
-    type: 'LineChart',
-    columns: [
-      ['datetime', 'Date'],
-      ['number', 'Temp']
-    ],    
-    rows: [],
-    options: {
-      'title':'Values Trend',
-      'width':800,
-      'height':300
-    }
-  };
+  // chart = {
+  //   target: 'chart',
+  //   type: 'LineChart',
+  //   columns: [
+  //     ['datetime', 'Date'],
+  //     ['number', 'Temp']
+  //   ],    
+  //   rows: [],
+  //   options: {
+  //     'title':'Values Trend',
+  //     'width':800,
+  //     'height':300
+  //   }
+  // };
   
   ngOnInit() {
     
@@ -102,11 +104,10 @@ export class TrendsComponent implements OnInit, OnDestroy {
 
   /*  funzione che disegna il grafico dato un array di oggetti  */
   Draw(x, l){
-  
     /*  la query restituisce un array di oggetti. In questo caso gli oggetti weatherSamps che voglio rappresentare sul chart. 
     Svuoto quindi l'array delle righe per poterlo riempire con il nuovo risultato della query
     che mi arriva in caso di cambio del DB  */
-    this.chart.rows=[];
+    this.data=[];
   
     /*  x è un array di oggetti. Per ogni oggetto dell'array (y) lo inserisco in testa all'array delle rows 
     [[v(t-4)],[v(t-3)],[v(t-2)],[v(t-1)]] <- v(t)
@@ -114,12 +115,12 @@ export class TrendsComponent implements OnInit, OnDestroy {
     faccio questo per supportare i grafici live, dove stabilisci una finestra temporale larga l
     e il grafico presenta a video solo gli ultimi l elementi, realizzando un effetto di scroll temporale  */
     x.map(y => {                                                      
-      this.chart.rows.unshift([y.Timestamp,y.temp]);                      
-      if(this.chart.rows.length>l) this.chart.rows.pop();            
+      this.data.unshift({ Timestamp: y.Timestamp, temp:y.temp });                      
+      if(this.data.length>l) this.data.pop();            
     });
   
     /*  disegno il grafico.  */
-    drawChart(this.chart)
+    //drawChart(this.chart)
   
   }
 

@@ -11,6 +11,7 @@ import { CONTROLLER_DECLARATIONS } from './pages/controller';
 import { WATERPLANT_DECLARATIONS } from './pages/waterplant';
 import { DOCS_DECLARATIONS } from './pages/docs';
 import { TRENDS_DECLARATIONS } from './pages/trends';
+import { CHART_DECLARATIONS } from '../objects/chart';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { TRENDS_DECLARATIONS } from './pages/trends';
     ...DOCS_DECLARATIONS,
     ...TRENDS_DECLARATIONS,
     ...WATERPLANT_DECLARATIONS,
+    ...CHART_DECLARATIONS,
   ],
   bootstrap: [
     AppComponent
