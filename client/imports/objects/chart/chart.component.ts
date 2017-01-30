@@ -3,6 +3,7 @@ import { Component, Input, ViewEncapsulation, OnChanges } from '@angular/core';
 import template from './chart.component.html';
 import style from './chart.component.scss';
 
+
 @Component({
   selector: 'chart',
   encapsulation: ViewEncapsulation.None,
@@ -13,38 +14,21 @@ export class ChartComponent implements OnChanges {
 
 	@Input() data: Object[];
 
+	margin = 40;
+  width = 960 - this.margin*2;
+  height = 500 - this.margin*2;
+
 	ngOnChanges(){
   	
-  	/*var data=[
-			{ "Timestamp" : "2015-12-14T09:35:00Z", "temp" : 6.2 },
-			{ "Timestamp" : "2015-12-14T09:30:00Z", "temp" : 6.1 },
-			{ "Timestamp" : "2015-12-14T09:25:00Z", "temp" : 6 },
-			{ "Timestamp" : "2015-12-14T09:20:00Z", "temp" : 5.9 },
-			{ "Timestamp" : "2015-12-14T09:15:00Z", "temp" : 5.8 },
-			{ "Timestamp" : "2015-12-14T09:10:00Z", "temp" : 5.7 },
-			{ "Timestamp" : "2015-12-14T09:05:00Z", "temp" : 5.5 },
-			{ "Timestamp" : "2015-12-14T09:00:00Z", "temp" : 5.3 },
-			{ "Timestamp" : "2015-12-14T08:55:00Z", "temp" : 5.2 },
-			{ "Timestamp" : "2015-12-14T08:50:00Z", "temp" : 5.2 }
-		];*/
-
-		var vis = d3.select("#visualization");
-
-		var WIDTH = 1000;
-		var HEIGHT = 500;
-
-  	var MARGINS = {
-    	top: 20,
-    	right: 20,
-    	bottom: 25,
-    	left: 50
-  	};
-
-		var format = d3.time.format.utc("%Y-%m-%dT%H:%M:%SZ");
+		var vis = d3.select("#visualization")
+	    .attr("width", this.width + this.margin*2)
+	    .attr("height", this.height + this.margin*2)
+	  .append("g")
+	    .attr("transform", "translate(" + this.margin + "," + this.margin + ")");
 
 		var x = d3.time.scale()
-			.range([MARGINS.left, WIDTH - MARGINS.right])
-			.domain(d3.extent(this.data, function(d) { return d.Timestamp })); // console.log("Timestamp: ", d.Timestamp, " and format.parse(\"2015-12-14T09:05:00Z\"): ", format.parse("2015-12-14T09:05:00Z")); 
+			.range([0, this.width])//[this.margin, this.width - this.margin])
+			.domain(d3.extent(this.data, function(d) { return d.Timestamp })); 
 
 		var xAxis = d3.svg.axis()
 		  .scale(x)         
@@ -52,7 +36,7 @@ export class ChartComponent implements OnChanges {
 		  .ticks(this.data.length);
 
 		var y = d3.scale.linear()
-			.range([MARGINS.top, HEIGHT - MARGINS.bottom]) 
+			.range([0, this.height]) 
 			.domain(d3.extent(this.data, function(d) { return d.temp }).sort(d3.descending));
 
 		var yAxis = d3.svg.axis()
@@ -61,21 +45,25 @@ export class ChartComponent implements OnChanges {
 		  .ticks(4);  
 
 		vis.append('svg:g')            
-		  .attr("transform", "translate(0, " + (HEIGHT - MARGINS.bottom) + ")")
+      .attr("transform", "translate(0," + this.height + ")")
 		  .attr('class', 'x axis')
 		  .call(xAxis);    
 		 
-		vis.append('svg:g')            
-		  .attr('class', 'y axis')
-		  .attr("transform", "translate(" + (MARGINS.left) + ",0)")
-		  .call(yAxis);   
+		vis.append('svg:g')
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Temperature (°C)");
 
 		var lineGen = d3.svg.line()
 		  .x(function(d) {
-		    return x(d.Timestamp); //format.parse(
+		    return x(d.Timestamp);
 		  })
 		  .y(function(d) {
-		  	console.log(d);
 		    return y(d.temp);
 		  })
 		  .interpolate("basis");
