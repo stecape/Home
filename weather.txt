@@ -1,2 +1,3 @@
+typings install registry:env/meteor --global --save
 mongoimport --db meteor --collection weatherSamps --headerline --type csv --file weather.csv --host=127.0.0.1:3001
 db.weatherSamps.find().forEach(function(el){el.Timestamp = new Date(el.Timestamp.replace(" ","T")+"Z"); db.weatherSamps.save(el)});
