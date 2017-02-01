@@ -6,9 +6,14 @@ import template from './controller.component.html';
   selector: 'controller',
   template
 })
+
+
 export class ControllerComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() { }
+
+  ngOnInit() {
+
+  }
 }
