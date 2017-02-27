@@ -10,12 +10,13 @@ import { TrendsFormComponent } from './trends-form.component';
 import { ChartComponent } from '../../../objects/chart/chart.component';
  
 import template from './trends.component.html';
+import style from './trends.component.scss';
  
 @Component({
 
   selector: 'trends',
-  template
-
+  template,
+  styles:  [style]
 })
 
 export class TrendsComponent implements OnInit, OnDestroy {
