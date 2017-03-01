@@ -1,5 +1,3 @@
-import { CollectionObject } from './collection-object.model';
-
 export interface WeatherSamp {
   Timestamp: Date;
   windunit: string;

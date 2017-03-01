@@ -1,8 +1,6 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { TestValues } from '../../../../../both/collections/test-values.collection';
-
 import template from './trends-form.component.html';
  
 @Component({
@@ -31,8 +29,4 @@ export class TrendsFormComponent implements OnInit {
       this.timeSpanDefForm.reset();
     }
   }
-
-  insertValue(): void {
-    TestValues.insert({date: new Date(), value: Math.floor((Math.random() * 100) + 1)});
-  }  
 }

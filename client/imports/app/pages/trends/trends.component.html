@@ -1,13 +1,34 @@
-<!-- <div class="panel panel-default" style="height: auto">
-  <div class="panel-heading">
-    <h3 class="panel-title">Find</h3>
+<div class="graph col-md-8">
+	<chart [data]=data></chart>
+</div>
+<div class="col-md-4">
+	<trends-form (onSubmitted)="timeSpanUpdate($event)"></trends-form>
+	<div class="list-group">
+	  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+	    <div class="d-flex w-100 justify-content-between">
+	      <h5 class="mb-1">List group item heading</h5>
+	      <small>3 days ago</small>
+	    </div>
+	    <p class="mb-1">Ciao</p>
+	    <small>Small</small>
+	  </a>
+	  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+	    <div class="d-flex w-100 justify-content-between">
+	      <h5 class="mb-1">List group item heading</h5>
+	      <small class="text-muted">3 days ago</small>
+	    </div>
+	    <p class="mb-1">Bonjour</p>
+	    <small class="text-muted">Petite</small>
+	  </a>
+	  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+	    <div class="d-flex w-100 justify-content-between">
+	      <h5 class="mb-1">List group item heading</h5>
+	      <small class="text-muted">3 days ago</small>
+	    </div>
+	    <p class="mb-1">Bonjour</p>
+	    <small class="text-muted">Petite</small>
+	  </a>
 	</div>
-  <div class="panel-body"> -->
-		<div class="graph col-md-8">
-			<chart [data]=data></chart>
-		</div>
-  	<div class="col-md-4">
-			<trends-form (onSubmitted)="timeSpanUpdate($event)"></trends-form>
-		</div>
+</div>
 <!-- 	</div>
 </div> -->

@@ -1,3 +1,6 @@
 typings install registry:env/meteor --global --save
 mongoimport --db meteor --collection weatherSamps --headerline --type csv --file weather.csv --host=127.0.0.1:3001
 db.weatherSamps.find().forEach(function(el){el.Timestamp = new Date(el.Timestamp.replace(" ","T")+"Z"); db.weatherSamps.save(el)});
+
+
+for (i=new Date ("12/12/2015 00:00:00").getTime(); i<new Date ("12/14/2015 23:59:59").getTime(); i=i+300000) db["Nome Zona (es: Studio)"].insert({"Timestamp":new Date(i), "set":Math.round((Math.random() * 1)) +18, "act":Math.round((Math.random() * 50))/10 +15, "valve": Math.round((Math.random() * 1))})
