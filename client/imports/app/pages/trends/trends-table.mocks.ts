@@ -1,4 +1,4 @@
-import  { Table } from './table.model'; 	//importo la classe MenuItem così posso usarla qui dentro
+import  { Table } from './trends-table.model'; 	//importo la classe MenuItem così posso usarla qui dentro
 
 import { WeatherSamps } from '../../../../../both/collections/weather-samps.collection';
 import { Studio, Sala, Bagno, Cucina, Ingresso, ZonaNotte } from '../../../../../both/collections/zones.collection';

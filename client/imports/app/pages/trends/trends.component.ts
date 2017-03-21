@@ -7,6 +7,7 @@ import { WeatherSamps } from '../../../../../both/collections/weather-samps.coll
 import { WeatherSamp } from '../../../../../both/models/weather-samp.model';
 
 import { TrendsFormComponent } from './trends-form.component';
+import { TrendsTableComponent } from './trends-table.component';
 import { ChartComponent } from '../../../objects/chart/chart.component';
  
 import template from './trends.component.html';
